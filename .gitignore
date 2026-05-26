@@ -2,8 +2,8 @@
 .idea/
 .vscode/
 bin/
-service
-trends
+/service
+/trends
 coverage.out
 *.test
 
