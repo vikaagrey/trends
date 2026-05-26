@@ -12,7 +12,7 @@ import (
 
 	"github.com/segmentio/kafka-go"
 
-	"github.com/vikagrej/trends/internal/consumer"
+	"github.com/vikagrej/trends/internal/domain/dto"
 )
 
 func main() {
@@ -34,7 +34,7 @@ func main() {
 	ctx := context.Background()
 	now := time.Now().UTC()
 
-	var events []consumer.SearchEvent
+	var events []dto.SearchEvent
 
 	if *query != "" {
 		uniqueSources := *sources
@@ -42,7 +42,7 @@ func main() {
 			uniqueSources = *n
 		}
 		for i := 0; i < *n; i++ {
-			events = append(events, consumer.SearchEvent{
+			events = append(events, dto.SearchEvent{
 				Query:  *query,
 				Source: fmt.Sprintf("e2e-user-%d", i%uniqueSources),
 				TsMs:   now.UnixMilli(),
@@ -50,7 +50,7 @@ func main() {
 		}
 	} else if *flood {
 		for i := 0; i < 1000; i++ {
-			events = append(events, consumer.SearchEvent{
+			events = append(events, dto.SearchEvent{
 				Query:  "накрутка",
 				Source: "bot-account",
 				TsMs:   now.Add(-time.Duration(rand.Intn(300)) * time.Second).UnixMilli(),
@@ -58,7 +58,7 @@ func main() {
 		}
 		queries := []string{"слайм", "sixseven", "лабубу", "стикеры"}
 		for i := 0; i < 200; i++ {
-			events = append(events, consumer.SearchEvent{
+			events = append(events, dto.SearchEvent{
 				Query:  queries[rand.Intn(len(queries))],
 				Source: fmt.Sprintf("user-%d", rand.Intn(5_000)),
 				TsMs:   now.Add(-time.Duration(rand.Intn(300)) * time.Second).UnixMilli(),
@@ -72,7 +72,7 @@ func main() {
 			"бисер", "набор для творчества", "антистресс", "пенал",
 		}
 		for i := 0; i < *n; i++ {
-			events = append(events, consumer.SearchEvent{
+			events = append(events, dto.SearchEvent{
 				Query:  queries[rand.Intn(len(queries))],
 				Source: fmt.Sprintf("user-%d", rand.Intn(10_000)),
 				TsMs:   now.Add(-time.Duration(rand.Intn(300)) * time.Second).UnixMilli(),

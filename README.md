@@ -60,6 +60,18 @@ make down
 
 ---
 
+## Слои проекта
+
+- `internal/domain` - DTO и доменные модели без I/O зависимостей
+- `internal/usecase` - бизнес-логика (`trends`, `stoplist`)
+- `internal/infrastructure` - Postgres, Redis, TopN storage/runtime
+- `internal/transport` - HTTP, Kafka, wiring, запуск миграций
+
+Миграции лежат в корне: `migrations/`.
+При старте сервиса `goose` накатывается автоматически в `transport/wiring`.
+
+---
+
 ## API
 
 ### GET /api/v1/top?n=10

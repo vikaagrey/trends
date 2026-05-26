@@ -5,6 +5,7 @@ go 1.24
 require (
 	github.com/axiomhq/hyperloglog v0.0.0-20230201085229-3ddf4bad03dc
 	github.com/jackc/pgx/v5 v5.5.5
+	github.com/pressly/goose/v3 v3.15.0
 	github.com/prometheus/client_golang v1.20.5
 	github.com/redis/go-redis/v9 v9.19.0
 	github.com/segmentio/kafka-go v0.4.47
