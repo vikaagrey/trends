@@ -1,0 +1,14 @@
+.DS_Store
+.idea/
+.vscode/
+bin/
+service
+trends
+coverage.out
+*.test
+
+.env
+.env.*
+
+tmp/
+dist/

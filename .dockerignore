@@ -1,0 +1,10 @@
+.DS_Store
+.vscode/
+.git/
+
+bin/
+tmp/
+dist/
+
+*.test
+coverage.out
